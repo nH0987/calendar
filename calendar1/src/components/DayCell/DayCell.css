@@ -1,0 +1,115 @@
+.day-cell {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  border-radius: 15px;
+  padding: 1rem;
+  min-height: 120px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.day-cell:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.day-cell.today {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.3));
+  border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.day-cell.today::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
+  pointer-events: none;
+}
+
+.day-number {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.day-cell.today .day-number {
+  font-size: 1.4rem;
+  color: #fff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.events-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.event-dot {
+  padding: 0.4rem 0.6rem;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.event-dot:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.event-preview-text {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.more-events {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 0.3rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .day-cell {
+    min-height: 80px;
+    padding: 0.6rem;
+  }
+
+  .day-number {
+    font-size: 1rem;
+  }
+
+  .day-cell.today .day-number {
+    font-size: 1.1rem;
+  }
+
+  .event-dot {
+    font-size: 0.65rem;
+    padding: 0.3rem 0.5rem;
+  }
+}
